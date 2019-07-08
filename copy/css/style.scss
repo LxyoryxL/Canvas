@@ -1,0 +1,192 @@
+$toolWidth: 100%;
+$toolTop: 20px;
+$btWidth: 50px;
+$btHeight: 50px;
+$colorWidth: 30px;
+$rangeWidth: 30px;
+$rangeHeight: 150px;
+
+* {
+  margin: 0;
+  padding: 0;
+
+  body {
+    overflow: hidden;
+  }
+
+  #draw-board {
+    background: white;
+    position: fixed;
+    display: block;
+    cursor: crosshair;
+  }
+
+  .tools {
+    position: fixed;
+    top: $toolTop;
+    width: $toolWidth;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    button {
+      border-radius: 50%;
+      width: $btWidth;
+      height: $btHeight;
+      background-color: rgba($color: white, $alpha: 0.7);
+      border: 1px solid #eee;
+      outline: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      margin: 0 10px;
+      text-align: center;
+      color: #ccc;
+      // line-height: $btHeight;
+      box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
+      transition: 0.3s;
+
+      &:active,
+      &.active {
+        box-shadow: 0 0 15px #00ccff;
+        color: #00ccff;
+      }
+
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .color-group {
+    position: fixed;
+    width: $colorWidth;
+    left: 30px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    ul {
+      list-style: none;
+
+      li {
+        width: 30px;
+        height: 30px;
+        margin: 10px 0;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 3px solid white;
+        box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.2);
+        cursor: pointer;
+        transition: 0.3s;
+
+        &.active {
+          box-shadow: 0 0 15px #00ccff;
+        }
+      }
+    }
+  }
+
+  #range-wrap {
+    position: fixed;
+    top: 50%;
+    // right: 30px;
+    // width: $rangeWidth;
+    // height: $rangeHeight;
+    // transform: translate(0, -50%);
+
+    // input[type=range] {
+    //     -webkit-appearance: none;
+    //     transform: rotate(-90deg);
+    //     width: 150px;
+    //     height: 20px;
+    //     margin: 0;
+    //     transform-origin: 75px 75px;
+    //     border-radius: 15px;
+    //     outline: none;
+    //     position: relative;
+
+    //     &:after {
+    //         display: block;
+    //         content: "";
+    //         width: 0;
+    //         height: 0;
+    //         border: 5px solid rebeccapurple;
+    //         border-right: 150px solid #00CCFF;
+    //         border-left-width: 0;
+    //         position: absolute;
+    //         left: 0;
+    //         top: 5px;
+    //         border-radius: 15px;
+    //         z-index: 0;
+    //     }
+
+    //     &::-webkit-slider-thumb {
+    //         -webkit-appearance: none;
+    //     }
+
+    //     &::-webkit-slider-runnable-track {
+    //         height: 18px;
+    //         border-radius: 10px;
+    //         box-shadow: none;
+    //     }
+
+    //     &::-webkit-slider-thumb {
+    //         height: 20px;
+    //         width: 20px;
+    //         margin-top: -1px;
+    //         background: #ffffff;
+    //         border-radius: 50%;
+    //         box-shadow: 0 0 8px #00CCFF;
+    //         position: relative;
+    //         z-index: 999;
+    //     }
+    // }
+  }
+
+  // 响应式
+  @media screen and (max-width: 700px) {
+    .tools {
+      button {
+        width: $btWidth/2;
+        height: $btHeight/2;
+        line-height: $btHeight/2;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+        & .active,
+        & :active {
+          box-shadow: 0 0 5px #00ccff;
+        }
+
+        i {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .color-group {
+      left: 0;
+      top: auto;
+      bottom: 20px;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      transform: translate(0, 0);
+
+      ul {
+        li {
+          display: inline-block;
+          margin: 0 5px;
+
+          & .active {
+            box-shadow: 0 0 10px #00ccff;
+          }
+        }
+      }
+    }
+
+    #range-wrap {
+      right: auto;
+      left: 20px;
+    }
+  }
+}

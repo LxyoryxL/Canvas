@@ -1,1 +1,166 @@
 # Canvas
+
+### 主要实现的功能
+
+- 切换画笔颜色
+- 调整笔刷粗细
+- 清空画布
+- 橡皮擦擦除
+- 撤销操作
+- 保存成图片
+- 兼容移动端（支持触摸）
+
+### 流程
+
+#### 1. 准备
+
+准备容器：画板
+
+```html
+<canvas id="draw-board"></canvas>
+```
+
+初始化 画板
+
+```javascript
+let canvas = document.getElementById("draw-board")
+let ctx = canvas.getContext("2d")
+```
+
+把画板做成全屏的，于是设置下 canvas 的宽高
+
+```javascript
+canvas.width = document.documentElement.clientWidth
+canvas.height = document.documentElement.clientHeight
+```
+
+#### 2. 画线功能
+
+用户在画板上绘画时主要是三个状态：鼠标点击，鼠标移动，鼠标离开
+分别对应三个事件：mousedown mousemove mouseup
+
+当用户用鼠标点击时：
+
+```javascript
+canvas.onmousedown = function(e) {
+  // 鼠标按下事件
+  using = true //标志开始使用画布
+  let x = e.clientX
+  let y = e.clientY
+  lastPoint = {
+    x: x,
+    y: y
+  }
+  drawCicle(x, y, 0.5)
+}
+```
+
+当用户鼠标移动时：
+
+```javascript
+canvas.onmousemove = function(e) {
+  // 鼠标移动事件
+  if (using) {
+    let x = e.clientX
+    let y = e.clientY
+    let newPoint = {
+      x: x,
+      y: y
+    }
+    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, clear)
+    lastPoint = newPoint
+  }
+}
+```
+
+当用户鼠标离开时：
+
+```javascript
+canvas.onmouseup = function(e) {
+  // 鼠标离开事件
+  using = false
+}
+```
+
+其中使用到的 绘制直线函数（drawLine()） 绘制小圆点函数（drawCircle()）具体实现如下：
+
+```javascript
+// 绘制小圆点函数:
+function drawCicle(x, y, radius) {
+  ctx.save()
+  ctx.beginPath()
+  ctx.arc(x, y, radius, 0, Math.PI * 2)
+  ctx.fill()
+}
+// 绘制直线函数
+function drawLine(x1, y1, x2, y2) {
+  ctx.lineWidth = 3
+  ctx.lineCap = "round"
+  ctx.lineJoin = "round"
+  ctx.moveTo(x1, y1)
+  ctx.lineTo(x2, y2)
+  ctx.stroke()
+  ctx.closePath()
+}
+```
+
+#### 3. 橡皮擦功能
+
+实现思路：
+
+1. 获取橡皮擦元素
+2. 设置橡皮擦初始状态，clear = false。
+3. 监听橡皮擦 click 事件，点击橡皮擦，改变橡皮擦状态，clear = true。
+4. clear 为 true 时，移动鼠标使用 canvas 剪裁（clip()）擦除画布。
+
+#### 4. 切换画笔颜色
+
+实现思路
+
+获取颜色节点
+设置画布的 strokeStyle
+
+#### 5. 调整画笔粗细
+
+实现思路：
+
+创建 input[type=range]
+滑动 range 获取其 value 值，并赋给 ctx.lineWidth
+
+#### 6. 清空画布
+
+#### 7. 撤销
+
+实现思路：
+
+准备一个数组记录历史操作
+每次使用画笔前将当前绘图表面储存进数组
+点击撤销时，恢复到上一步的绘图表面
+
+#### 兼容移动端
+
+实现思路：
+
+判断设备是否支持触摸
+true，则使用 touch 事件；false，则使用 mouse 事件
+代码：
+
+```
+if (document.body.ontouchstart !== undefined) {
+    // 使用touch事件
+    anvas.ontouchstart = function (e) {
+        // 开始触摸
+    }
+    canvas.ontouchmove = function (e) {
+        // 开始滑动
+    }
+    canvas.ontouchend = function () {
+        // 滑动结束
+    }
+}else{
+    // 使用mouse事件
+    ...
+}
+```
+
+这里需要注意的一点是，在 touch 事件里，是通过.touches[0].clientX 和.touches[0].clientY 来获取坐标的，这点要和 mouse 事件区别开。
