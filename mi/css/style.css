@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* body {
+  overflow: hidden;
+}
+
+* #draw-board {
+  background: white;
+  position: fixed;
+  display: block;
+  cursor: crosshair;
+}
+
+* .tools {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+* .tools button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #eee;
+  outline: none;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 10px;
+  text-align: center;
+  color: #ccc;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+* .tools button:active, * .tools button.active {
+  -webkit-box-shadow: 0 0 15px #00ccff;
+          box-shadow: 0 0 15px #00ccff;
+  color: #00ccff;
+}
+
+* .tools button i {
+  font-size: 24px;
+}
+
+* .color-group {
+  position: fixed;
+  width: 30px;
+  left: 30px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+* .color-group ul {
+  list-style: none;
+}
+
+* .color-group ul li {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0;
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 3px solid white;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+* .color-group ul li.active {
+  -webkit-box-shadow: 0 0 15px #00ccff;
+          box-shadow: 0 0 15px #00ccff;
+}
+
+* #range-wrap {
+  position: fixed;
+  top: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  * .tools button {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  * .tools button .active,
+  * .tools button :active {
+    -webkit-box-shadow: 0 0 5px #00ccff;
+            box-shadow: 0 0 5px #00ccff;
+  }
+  * .tools button i {
+    font-size: 18px;
+  }
+  * .color-group {
+    left: 0;
+    top: auto;
+    bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  * .color-group ul li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  * .color-group ul li .active {
+    -webkit-box-shadow: 0 0 10px #00ccff;
+            box-shadow: 0 0 10px #00ccff;
+  }
+  * #range-wrap {
+    right: auto;
+    left: 20px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
