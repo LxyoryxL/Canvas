@@ -5,10 +5,13 @@
 
     body {
         overflow: hidden;
+        background: url('../img/background-1.jpg') no-repeat center;
+        background-size: cover;
 
         #drawing-board {
             background: white;
             position: fixed;
+            opacity: 0.8;
             display: block;
             cursor: crosshair;
         }
