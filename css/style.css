@@ -10,7 +10,7 @@
 * body {
   overflow: hidden;
   background: url("../img/background-1.jpg") no-repeat center;
-  background-size: cover;
+  background-size: inherit;
 }
 
 * body #drawing-board {

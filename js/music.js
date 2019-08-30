@@ -7,7 +7,7 @@ var music_pic = document.getElementById("music_pic");
 var deg = 0; //旋转角度
 var disctimer, prograsstimer; //碟片计时器,进度条计时器
 var musicindex = 0; //音乐索引
-var musics = new Array("http://stor.cloudmusics.cn/mp3/2019/08/80d2527c49c6969252654472b3bde30b.mp3", "http://stor.cloudmusics.cn/mp3/2019/08/ef610fa5259ce155be39f81b78fd73d5.mp3"); //音乐数组
+var musics = new Array("1.mp3", "2.mp3"); //音乐数组
 var music_pics = new Array("default", "000001");
 
 
@@ -91,7 +91,7 @@ function backMusic() {
 
 //读取音乐
 function getMusic() {
-    music.src = musics[musicindex]; //改变音乐的SRC
+    music.src = "img/music/" + musics[musicindex]; //改变音乐的SRC
     music_pic.src = "img/music/pictures/" + music_pics[musicindex] + ".jpg";
     if (music.readyState = "complete") {
         setTimeout(function () {
