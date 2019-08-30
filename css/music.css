@@ -1,0 +1,99 @@
+.music_content {
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+}
+
+.music {
+    height: 140px;
+    width: 140px;
+    background: rgba(98, 91, 91, 0.9);
+    opacity: 0.7;
+}
+
+.pic_div {
+    position: relative;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    background: #464545;
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 50%;
+    top: 40px;
+    left: 85px;
+}
+
+.disc {
+    width: 100px;
+    position: absolute;
+    right: 5px;
+}
+
+#music_pic {
+    width: 100px;
+    position: absolute;
+}
+
+.music_program {
+    height: 2px;
+    width: 100px;
+    background: #555;
+    position: relative;
+    top: 100px;
+}
+
+.music_program div {
+    height: 100%;
+    width: 0%;
+    background: red;
+}
+
+.time {
+    width: 100px;
+    height: 20px;
+    font-size: 0.5rem;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    overflow: hide;
+}
+
+.time p {
+    padding-left: 33px;
+}
+
+.time p span:nth-of-type(2) {
+    padding: 0 5px;
+}
+
+.music_menu {
+    width: 100%;
+    height: 25px;
+    position: relative;
+    top: 93px;
+}
+
+.music_menu span {
+    width: 30px;
+    height: 25px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.music_menu span:nth-of-type(1) {
+    background: url(../img/music/pictures/back.png) no-repeat 7px;
+    margin-left: 8px;
+}
+
+.music_menu span:nth-of-type(2) {
+    background: url(../img/music/pictures/play.png) no-repeat 10px;
+    margin-left: 5px;
+}
+
+.music_menu span:nth-of-type(3) {
+    background: url(../img/music/pictures/forward.png) no-repeat 7px;
+    margin-left: 5px;
+}
